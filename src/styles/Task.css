@@ -1,0 +1,98 @@
+/* src/components/Task.css */
+.task-card {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    /* background-color: #fff; */
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+  
+.div1{
+    display: flex;
+    justify-content: space-between;
+}
+  .task-icon {
+    /* position: absolute; */
+    /* top: -10px;
+    left: 10px; */
+    /* background-color: #fff; */
+    /* border-radius: 50%; */
+    width: 20px;
+    height: 20px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* font-size: 1.2em; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+  }
+  
+  .task-priority {
+    /* position: absolute; */
+    /* top: 10px; */
+    /* right: 10px; */
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .task-content {
+    margin-top: 10px;
+    width: 95%;
+    padding: 10px;
+  }
+  
+  .task-content h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+  .task-content p {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  /* .task-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  } */
+
+/*   
+  .task-actions button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+   */
+  
+/* 
+  .task-actions button:first-child {
+    
+  }
+  
+  .task-actions button:last-child {
+    
+  }
+   */
+
+.div2{
+    display: flex;
+    justify-content: space-between;
+    height: max-content;
+}
+.div2 p{
+    margin: 0;
+}
+.btn1{
+    margin-left: 120px;
+    height: 20px;
+}
+.div2 button:last-child{
+    height: 20px;
+}
