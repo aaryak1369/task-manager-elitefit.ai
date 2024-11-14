@@ -1,5 +1,6 @@
 // src/components/TaskForm.js
 import React, { useState } from 'react';
+import { RiAddLargeLine } from "react-icons/ri";
 import '../styles/TaskForm.css'
 
 const TaskForm = ({ onAddTask }) => {
@@ -39,7 +40,7 @@ const TaskForm = ({ onAddTask }) => {
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                 </select>
-            <button className="submit-btn" type="submit"  onClick={handleSubmit}></button>
+            <button className="submit-btn" type="submit"  onClick={handleSubmit}><RiAddLargeLine/></button>
         </div>
     );
 };

@@ -1,5 +1,11 @@
 // src/components/Task.js
 import React, {useState} from 'react';
+
+import { MdOutlineModeEdit } from "react-icons/md";
+import { MdDeleteOutline } from "react-icons/md";
+import { LuCheckCircle } from "react-icons/lu";
+
+
 import '../styles/Task.css'
 
 const Task = ({ task, onDeleteTask, onUpdateTask, icon }) => {
@@ -26,9 +32,9 @@ const Task = ({ task, onDeleteTask, onUpdateTask, icon }) => {
     <div className="task-card">
         <div className='div1'>
             <div className="task-icon">{icon}</div>
-            <div><button className="" onClick={handleComplete}>Complete</button>
-            <button className="" onClick={() => onDeleteTask(task.id)}>Delete</button>
-            <button className="" onClick={handleEditToggle}>Edit</button></div>
+            <div className="div11"><button className="" onClick={handleComplete}><LuCheckCircle/></button>
+            <button className="" onClick={() => onDeleteTask(task.id)}><MdDeleteOutline/></button>
+            <button className="" onClick={handleEditToggle}><MdOutlineModeEdit/></button></div>
         </div>
         <div className="task-content">
                 {isEditing ? (
