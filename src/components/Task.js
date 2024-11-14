@@ -1,31 +1,77 @@
 // src/components/Task.js
-import React from 'react';
+import React, {useState} from 'react';
 import '../styles/Task.css'
 
 const Task = ({ task, onDeleteTask, onUpdateTask, icon }) => {
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedTask, setEditedTask] = useState({ ...task });
     const handleComplete = () => {
         onUpdateTask({ ...task, completed: true });
+    };
+    const handleEditToggle = () => {
+        setIsEditing(!isEditing);
+        setEditedTask({ ...task }); // Reset the form with the current task details
+    };
+
+    const handleSave = () => {
+        onUpdateTask(editedTask);
+        setIsEditing(false);
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setEditedTask({ ...editedTask, [name]: value });
     };
     return (
     <div className="task-card">
         <div className='div1'>
             <div className="task-icon">{icon}</div>
-            <div className="task-priority">{task.priority}</div>
+            <div><button className="" onClick={handleComplete}>Complete</button>
+            <button className="" onClick={() => onDeleteTask(task.id)}>Delete</button>
+            <button className="" onClick={handleEditToggle}>Edit</button></div>
         </div>
         <div className="task-content">
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <div className='div2'>
-                <p>Due: {new Date(task.dueDate).toLocaleDateString()}</p>
-                <button className='btn1' onClick={handleComplete} >Complete</button>
-                <button onClick={() => onDeleteTask(task.id)}>Delete</button>
-            </div>
-            
-             {/* <div className="task-actions"> 
-             <button onClick={() => onUpdateTask(task.id)}>Complete</button>
-                <button onClick={() => onDeleteTask(task.id)}>Delete</button>
-            </div> */}
-            
+                {isEditing ? (
+                    <>
+                        <input
+                            type="text"
+                            name="title"
+                            value={editedTask.title}
+                            onChange={handleChange}
+                        />
+                        <textarea
+                            name="description"
+                            value={editedTask.description}
+                            onChange={handleChange}
+                        />
+                        <input
+                            type="date"
+                            name="dueDate"
+                            value={editedTask.dueDate}
+                            onChange={handleChange}
+                        />
+                        <select
+                            name="priority"
+                            value={editedTask.priority}
+                            onChange={handleChange}
+                        >
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <button onClick={handleSave}>Save</button>
+                        <button onClick={handleEditToggle}>Cancel</button>
+                    </>
+                ) : (
+                    <>
+                        <h3>{task.title}</h3>
+                        <p>{task.description}</p>
+                        <div className="div2">
+                            <p>Due: {new Date(task.dueDate).toLocaleDateString()}</p>
+                            <div className="task-priority">{task.priority}</div>
+                        </div>
+                    </>
+                )}
         </div>
     </div>
     );
